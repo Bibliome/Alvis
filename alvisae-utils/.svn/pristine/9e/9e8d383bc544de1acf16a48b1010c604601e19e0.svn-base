@@ -1,0 +1,52 @@
+<!ENTITY % annotation-type "type ID #REQUIRED color CDATA #REQUIRED">
+<!ENTITY % boolean "( false | true )">
+
+<!ELEMENT alvisae-schema
+  ( text-bound | group | relation )+
+>
+
+<!ELEMENT text-bound ( property* )>
+<!ATTLIST text-bound
+  %annotation-type;
+  minFrag NMTOKENS "1"
+  maxFrag NMTOKENS "1"
+  boundRef IDREF #IMPLIED
+  crossingAllowed %boolean; "true"
+>
+
+<!ELEMENT group ( component+, property* )>
+<!ATTLIST group
+  %annotation-type;
+  minComp NMTOKENS "1"
+  maxComp NMTOKENS "9999999"
+  homogeneous %boolean; "true"
+>
+
+<!ELEMENT component EMPTY>
+<!ATTLIST component
+  type IDREF #REQUIRED
+>
+
+<!ELEMENT relation ( argument+, property* )>
+<!ATTLIST relation
+  %annotation-type;
+>
+
+<!ELEMENT argument ( type+ )>
+<!ATTLIST argument
+  role NMTOKENS #REQUIRED
+>
+
+<!ELEMENT type EMPTY>
+<!ATTLIST type
+  id IDREF #REQUIRED
+>
+
+<!ELEMENT property ( #PCDATA )>
+<!ATTLIST property
+  key ID #REQUIRED
+  mandatory %boolean; "false"
+  minVal NMTOKENS "1"
+  maxVal NMTOKENS "2"
+>
+

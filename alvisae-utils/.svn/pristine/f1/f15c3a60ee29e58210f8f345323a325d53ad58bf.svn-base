@@ -1,0 +1,6 @@
+    - json.dtd: une définition pour une représentation XML d'un doc JSON
+    - json2json.xslt: transforme un doc XML/json.dtd en JSON
+    - alvisae-schema.dtd: une définition pour les spécifications de schéma d'annotations AlvisAE (plus kool que le JSON)
+    - ontobiotopes_schema.xml: le schema OntoBiotopes
+    - alvisae-schema2json.xslt: transforme un doc XML/alvisae-schema.dtd en XML/json.dtd (et donc transformable en JSON, directement importable)
+    - JSONUtils.java: transforme un doc JSON en XML/json.dtd, l'inverse de json2json.xslt (interrogeable par XPath, utilise json-simple)

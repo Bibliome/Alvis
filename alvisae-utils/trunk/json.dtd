@@ -1,0 +1,14 @@
+<!ENTITY % value "raw | quoted | array | object">
+
+<!ELEMENT raw ( #PCDATA )>
+
+<!ELEMENT quoted ( #PCDATA )>
+
+<!ELEMENT array ( %value; )*>
+
+<!ELEMENT object ( pair* )>
+
+<!ELEMENT pair ( %value; )>
+<!ATTLIST pair
+  key CDATA #REQUIRED
+>

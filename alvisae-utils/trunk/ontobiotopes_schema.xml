@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alvisae-schema SYSTEM "alvisae-schema.dtd" [
+  <!ENTITY tydi "<property key='TyDI_termRef'>{&quot;valTypeName&quot;: &quot;TyDI_termRef&quot;, &quot;TyDIRefBaseURL&quot;: &quot;http://bibliome.jouy.inra.fr/test/tydiws/rest/ontobiodemo/projects/8725573/&quot; }</property>">
+]>
+
+<alvisae-schema>
+
+  <text-bound type="Bacteria" color="#87CEFA">
+    &tydi;
+  </text-bound>
+
+  <group type="Bacteria_CoReference" color="#6AA2C4">
+    <component type="Bacteria"/>
+  </group>
+
+  <text-bound type="Host" color="#FFFF00">
+    &tydi;
+  </text-bound>
+
+  <group type="Host_CoReference" color="#C4C400">
+    <component type="Host"/>
+  </group>
+
+  <text-bound type="Host-part" color="#7FFF00">
+    &tydi;
+  </text-bound>
+
+  <group type="Host-part_CoReference" color="#62C400">
+    <component type="Host-part"/>
+  </group>
+
+  <text-bound type="Water" color="#7FFFD4">
+    &tydi;
+  </text-bound>
+
+  <group type="Water_CoReference" color="#62C4A3">
+    <component type="Water"/>
+  </group>
+
+  <text-bound type="Soil" color="#FF69B4">
+    &tydi;
+  </text-bound>
+
+  <group type="Soil_CoReference" color="#C4518A">
+    <component type="Soil"/>
+  </group>
+
+  <text-bound type="Environment" color="#6e6cff">
+    &tydi;
+  </text-bound>
+
+  <group type="Environment_CoReference" color="#5553C4">
+    <component type="Environment"/>
+  </group>
+
+  <text-bound type="Medical" color="#D3D3D3">
+    &tydi;
+  </text-bound>
+
+  <group type="Medical_CoReference" color="#C4C4C4">
+    <component type="Medical"/>
+  </group>
+
+  <relation type="part-of" color="#5F9EA0">
+    <argument role="host">
+      <type id="Host"/>
+      <type id="Host_CoReference"/>
+    </argument>
+    <argument role="part">
+      <type id="Host-part"/>
+      <type id="Host-part_CoReference"/>
+    </argument>
+  </relation>
+
+  <relation type="localization" color="#800080">
+    <argument role="bacteria">
+      <type id="Bacteria"/>
+      <type id="Bacteria_CoReference"/>
+    </argument>
+    <argument role="foundIn">
+      <type id="Host"/>
+      <type id="Host-part"/>
+      <type id="Water"/>
+      <type id="Soil"/>
+      <type id="Environment"/>
+      <type id="Medical"/>
+      <type id="Host_CoReference"/>
+      <type id="Host-part_CoReference"/>
+      <type id="Water_CoReference"/>
+      <type id="Soil_CoReference"/>
+      <type id="Environment_CoReference"/>
+      <type id="Medical_CoReference"/>
+    </argument>
+  </relation>
+</alvisae-schema>
