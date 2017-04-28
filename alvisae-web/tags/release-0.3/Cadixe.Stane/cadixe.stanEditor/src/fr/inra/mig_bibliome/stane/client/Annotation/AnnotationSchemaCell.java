@@ -1,0 +1,40 @@
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010-2011.
+ *
+ */
+package fr.inra.mig_bibliome.stane.client.Annotation;
+
+import com.google.gwt.cell.client.AbstractCell;
+import com.google.gwt.cell.client.Cell.Context;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.safehtml.client.SafeHtmlTemplates;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+
+/**
+ *
+ * @author fpapazian
+ */
+public abstract class AnnotationSchemaCell extends AbstractCell<String> {
+
+    public static interface AnnotationSchemaCellTemplates extends SafeHtmlTemplates {
+
+        @Template("<span class='{0}' style='width:2em;'>&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span>{0}</span>")
+        public SafeHtml classedSpan(String className);
+    }
+    
+    private static final AnnotationSchemaCellTemplates TEMPLATES = GWT.create(AnnotationSchemaCellTemplates.class);
+
+
+    public static void renderType(String annotationType, SafeHtmlBuilder sb) {
+        sb.append(TEMPLATES.classedSpan(annotationType));
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    
+    @Override
+    public abstract void render(Context context, String annotationType, SafeHtmlBuilder sb);
+}

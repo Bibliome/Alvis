@@ -1,0 +1,152 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010.
+ *
+ */
+-->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:Annotation="urn:import:fr.inra.mig_bibliome.stane.client.Annotation"
+>
+
+    <ui:with field='staneCoreRes' type='fr.inra.mig_bibliome.stane.client.StaneCoreResources'/>
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.stane.client.StaneResources'/>
+
+    <ui:style type='fr.inra.mig_bibliome.stane.client.Campaign.CampaignDocList.Styles'>
+.SmallerLabel {
+    font-size: smaller;
+}
+
+.MessageBar {
+    background-color:  lightsteelblue;
+}
+
+.GridHeader {
+    background-color: gainsboro;
+}
+
+.StatusBar {
+    background-color: lightsteelblue;
+}
+
+.Box {
+    border: steelblue solid 1px ;
+}
+
+.SelectedRow {
+    background-color: turquoise;
+}
+
+.PointerCursor {
+    cursor:pointer;
+}
+
+    </ui:style>
+    <g:DockLayoutPanel unit='EM' height="100%">
+        <g:north size='2'>
+            <g:LayoutPanel styleName='{style.MessageBar}' ui:field='messageBar' width='100%'>
+                <g:layer top='0.1EM' height='2EM' right='0.1EM' width='1EM'>
+                    <g:Image ui:field='aboutImage' resource='{staneRes.AboutIcon}'/>
+                </g:layer>
+                <g:layer top='0.1EM' height='2EM' right='2.2EM' width='2EM'>
+                    <g:PushButton ui:field='signingBtn' height='1.2em' width='1em' title=''>
+                        <g:upFace image='{staneCoreRes.SigningOutIcon}' />
+                    </g:PushButton>
+                </g:layer>
+            </g:LayoutPanel>
+        </g:north>            
+        <g:center>
+            <g:DockLayoutPanel unit='PCT' height="100%">
+                <g:west size='6'>
+                    <g:SimplePanel height="100%" width="100%" styleName='{style.MessageBar}' />
+                </g:west>
+                <g:center>
+                    <g:DockLayoutPanel unit='PCT' height="100%" width="100%">
+                        <g:north size='30'>
+                            <g:DockLayoutPanel unit='EM' height="100%" width="100%">
+                                <g:north size='1'>
+                                    <g:SimplePanel height="1EM" width="100%" styleName='{style.MessageBar}' />
+                                </g:north>
+                                <g:center>
+                                    <g:DockLayoutPanel unit='EM' height="100%" width="100%" styleName='{style.Box}'>
+                                        <g:north size='2.5'>
+                                            
+                                            <g:LayoutPanel height="100%" width='100%' styleName='{style.GridHeader}'>
+                                                <g:layer top='0.3EM' height='2EM' left='0.2EM' width='100%'>
+                                                    <g:Label width="100%">Campains</g:Label>
+                                                </g:layer>
+                                                <g:layer top='0.4EM' height='2EM' right='1.2EM' width='2EM'>
+                                                    <g:PushButton ui:field='refreshButton' height='1.2em' width='1.2em' title='refresh data'>
+                                                        <g:upFace image='{staneRes.refreshIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+                                            </g:LayoutPanel>                                            
+                                            
+                                        </g:north>
+                                        <g:center>
+                                            <g:ScrollPanel height='100%'>
+                                                <Annotation:Grid2 styleName='{style.PointerCursor}' ui:field='campaignGrid'>
+                                                </Annotation:Grid2>
+                                            </g:ScrollPanel>                                
+                                        </g:center>
+                                    </g:DockLayoutPanel>
+                                </g:center>
+                                <g:east size='6'>
+                                    <g:LayoutPanel addStyleNames='{style.MessageBar}' >
+                                        <g:layer top='1.8EM' height='100%' left='50%' width='100%'>
+                                            <g:SimplePanel height="1EM" width="100%" styleName='{style.MessageBar}' />
+                                        </g:layer>
+                                    </g:LayoutPanel>
+                                </g:east>
+                            </g:DockLayoutPanel>
+                        </g:north>
+                        <g:center>
+                            <g:DockLayoutPanel unit='EM' height="100%" width="100%">
+                                <g:north size='1'>
+                                    <g:SimplePanel height="1EM" width="100%" styleName='{style.MessageBar}' />
+                                </g:north>
+                                <g:center>
+                                    <g:DockLayoutPanel unit='EM' height="100%" width="100%" styleName='{style.Box}'>
+                                        <g:north size='2.5'>
+                                            
+                                            <g:LayoutPanel height="100%" width='100%' styleName='{style.GridHeader}'>
+                                                <g:layer top='0.3EM' height='2EM' left='0.2EM' width='100%'>
+                                                    <g:Label width="100%">Documents</g:Label>
+                                                </g:layer>
+                                                <g:layer top='0.4EM' height='2EM' right='1.2EM' width='2EM'>
+                                                    <g:PushButton ui:field='annotateDocButton' height='1.2em' width='1.2em' enabled='false' title='Annotate selected document'>
+                                                        <g:upFace image='{staneRes.NextDocumentIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+                                            </g:LayoutPanel>                                            
+                                            
+                                        </g:north>
+                                        <g:center>
+                                            <g:ScrollPanel height='100%'>
+                                                <Annotation:Grid2 styleName='{style.PointerCursor}' ui:field='docGrid'>
+                                                </Annotation:Grid2>
+                                            </g:ScrollPanel>                                
+                                        </g:center>
+                                    </g:DockLayoutPanel>
+                                </g:center>
+                                <g:east size='6'>
+                                    <g:SimplePanel height="100%" width="100%" styleName='{style.MessageBar}' />
+                                </g:east>
+                            </g:DockLayoutPanel>
+                        </g:center>
+                    </g:DockLayoutPanel>
+                </g:center>
+                <g:east size='6' >
+                    <g:SimplePanel height="100%" width="100%" styleName='{style.MessageBar}' />
+                </g:east>
+            </g:DockLayoutPanel>
+        </g:center>
+        <g:south size='6'>
+            <g:SimplePanel height="100%" width="100%" styleName='{style.MessageBar}' />
+        </g:south>           
+    </g:DockLayoutPanel>
+</ui:UiBinder>

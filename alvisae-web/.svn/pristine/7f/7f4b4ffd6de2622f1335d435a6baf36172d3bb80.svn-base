@@ -1,0 +1,260 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010.
+ *
+ */
+-->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:Document="urn:import:fr.inra.mig_bibliome.stane.client.Document"
+  xmlns:Annotation="urn:import:fr.inra.mig_bibliome.stane.client.Annotation"
+  xmlns:GwtGraphics="urn:import:org.vaadin.gwtgraphics.client">
+
+    <ui:data field='animatedTargetImg' src='fr/inra/mig_bibliome/stane/client/images/target-bgsmall.gif'/>
+    <ui:data field='staticTargetImg' src='fr/inra/mig_bibliome/stane/client/images/target-static.png'/>
+
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.stane.client.StanEditorResources'/>
+    <ui:with field='staneCoreRes' type='fr.inra.mig_bibliome.stane.client.StaneCoreResources'/>
+    
+    <ui:style type='fr.inra.mig_bibliome.stane.client.Document.DocumentUi.Styles'>
+        @url dropTargetImgUrl staticTargetImg;
+
+        .SelectableText {cursor:text;}
+
+/*
+        .TmpAnnot:after		{
+            content: attr(id);
+            vertical-align:text-top;
+            font-size: 7pt;
+            color: red;
+        }
+*/
+        .DropTargetAnnot {
+            background-color: transparent;
+            background-image: dropTargetImgUrl;
+            background-repeat: repeat;
+            background-attachment: scroll;
+            background-position:0 1px;
+        }
+
+        .DrawingArea {
+            position:absolute;
+            top:0px;
+            left:0px;
+            overflow:hidden;
+            height:100%;
+            width:100%;
+        }
+
+        .BackGroundPos {
+            z-index:-700;
+        }
+
+        .ForeGroundPos {
+            z-index:700;
+        }
+        
+        .Processing {
+            background-color: grey;
+        }
+        
+        .MarginBackground {
+            position:absolute;
+            top:0px;
+            left:0px;
+            overflow:hidden;
+            height:100%;
+            width:100%;
+            background-color: #F8F8F8;
+            z-index:-900;
+        }
+        .MarginContainer {
+            position:absolute;
+            top:0px;
+            left:3em;
+            overflow:hidden;
+            height:100%;
+            width:100%;
+            background-color: white;
+            z-index:-800;
+        }
+        
+        .Content {
+            height:100%;
+            padding-left: 3em;
+            padding-top: 1em;
+            padding-right: 1em;
+            padding-bottom: 2em;
+            background-color: transparent;
+       }
+       .SmallSeparator {
+            width: 6px;
+       }
+
+       .SmallText {
+           font-size: smaller;
+       }
+
+       .SelectionMarker {
+            position: absolute;
+            overflow: hidden;
+            background-color: red;
+            width: 2px;
+            height: 12px;
+            z-index:0;
+       }
+       
+
+.ToolBar {
+    background-color:  #D0E4F6;
+}
+
+.SmallButton {
+    height: 16px;
+    width: 16px;
+}       
+
+.TitleBar {
+    background-color:  #518be9;
+    color : white;
+}
+.TitleText {
+    font-size: large;
+}
+a.TitleHLink:link {color:white; text-decoration:none;}   
+a.TitleHLink:visited {color:white; text-decoration:none;}
+a.TitleHLink:hover {color:white; text-decoration:underline;}
+    </ui:style>
+
+    <g:LayoutPanel ui:field='layoutPanel' height='100%'>
+        <g:layer top='0px' height='2em' width='100%'>
+            <g:FocusPanel ui:field='titleBar' width='100%' height='100%'>
+                <g:HorizontalPanel verticalAlignment='middle' horizontalAlignment='center' width='100%' height='100%' styleName='{style.TitleBar}' >
+                    <g:Label ui:field='titleLabel' styleName='{style.TitleText}'></g:Label>
+                    <g:Anchor ui:field='titleHLink' title='click to get the PDF version of the document' target="_blank" styleName='{style.TitleHLink} {style.TitleText}'></g:Anchor>
+                </g:HorizontalPanel>            
+            </g:FocusPanel>
+        </g:layer>
+        <g:layer top='2em' width='100%' height='2em'>
+            <g:FlowPanel ui:field='toolBar' width='100%' styleName='{style.ToolBar}' >
+                <g:HorizontalPanel verticalAlignment='middle'>
+                    <g:SimplePanel addStyleNames='{style.SmallButton}' />
+                    <g:PushButton tabIndex='-1' ui:field='incLineSize' title='increase line height (shortcut [Shift &amp; +])' enabled='false' addStyleNames='{style.SmallButton}'  >
+                        <g:upFace image='{staneRes.IncLineSizeIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='decLineSize' title='decrease line height (shortcut [Shift &amp; -])' enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.DecLineSizeIcon}' />
+                    </g:PushButton>
+                    <g:SimplePanel addStyleNames='{style.SmallButton}' />
+                    <g:PushButton tabIndex='-1' ui:field='showFilterPanel' visible='false' title='show filter' enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.ShowVisibilityFilterIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='undoBtn' title='undo last edit (shortcut [Ctrl &amp; Z])' enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.UndoIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='redoBtn' title='redo last undo-ed edit [Ctrl &amp; Y]' enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.RedoIcon}' />
+                    </g:PushButton>
+                    <g:SimplePanel addStyleNames='{style.SmallButton}' />
+                    <g:SimplePanel ui:field='sp' height='100%' >
+                        <g:ListBox tabIndex='-1' ui:field='annTypeList' enabled='false' addStyleNames='{style.SmallText}' title='select the annotation type for new annotations'></g:ListBox>
+                    </g:SimplePanel>
+                    <g:PushButton tabIndex='-1' ui:field='addAnnotButton' title='create an annotation on the selected text (shortcut [A])' enabled='false' addStyleNames='{style.SmallButton}' >
+                        <g:upFace image='{staneRes.AddAnnotIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='deleteAnnButton' title='delete the selected annotation marker (shortcut [Del])'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.DelAnnotIcon}' />
+                    </g:PushButton>
+                    <!--
+                    <g:PushButton tabIndex='-1' ui:field='editAnnButton' title='edit the selected annotation marker'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.EditAnnotIcon}' />
+                    </g:PushButton>
+                    -->
+                    <g:PushButton tabIndex='-1' ui:field='addSelectionButton' title='add the text selection to the selected annotation' enabled='false' addStyleNames='{style.SmallButton}' >
+                        <g:upFace image='{staneRes.AddTextToAnnotIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='delSelectionButton' title='remove the text selection from the selected annotation' enabled='false' addStyleNames='{style.SmallButton}' >
+                        <g:upFace image='{staneRes.DelTextFromAnnotIcon}' />
+                    </g:PushButton>
+                    <g:SimplePanel addStyleNames='{style.SmallSeparator}' />
+                    <g:PushButton tabIndex='-1' ui:field='addGroupButton' title='create a group with the selected annotations'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.AddGroupIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='deleteGroupButton' title='delete the selected group'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.DelGroupIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='editGroupButton' title='edit the selected group'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.EditGroupIcon}' />
+                    </g:PushButton>
+                    <g:SimplePanel addStyleNames='{style.SmallSeparator}' />
+                    <g:PushButton tabIndex='-1' ui:field='addRelButton' title='create a relation with the selected annotations'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.AddRelationIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='deleteRelButton' title='delete the selected relation'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.DelRelationIcon}' />
+                    </g:PushButton>
+                    <g:PushButton tabIndex='-1' ui:field='editRelButton' title='edit the selected relation'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.EditRelationIcon}' />
+                    </g:PushButton>
+                    <g:SimplePanel addStyleNames='{style.SmallButton}' />
+                    <g:ToggleButton tabIndex='-1' ui:field='selectionModeBtn' title='switch between Text selection and Relation selection modes' enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.TextSelectModeIcon}' />
+                        <g:downFace image='{staneRes.RelationSelectModeIcon}' />
+                    </g:ToggleButton>
+                    <g:SimplePanel addStyleNames='{style.SmallSeparator}' />   
+                    <g:PushButton tabIndex='-1' ui:field='validateButton' title='validate the current document'  enabled='false' addStyleNames='{style.SmallButton}'>
+                        <g:upFace image='{staneRes.DocValidateIcon}' />
+                    </g:PushButton>
+                    <g:SimplePanel addStyleNames='{style.SmallSeparator}' />  
+                    <!--
+                    <Annotation:AnnotationTypeDropDownList ui:field='annTypeList2' title='select the annotation type for new annotations'>
+                    </Annotation:AnnotationTypeDropDownList>
+                    -->
+                    <g:SimplePanel addStyleNames='{style.SmallButton}' />
+                    <g:MenuBar ui:field='annSetsSelectionMenu'>
+                        <g:MenuItem ui:field="annSetMenuItem">Annotation Sets</g:MenuItem>
+                    </g:MenuBar>
+                </g:HorizontalPanel>
+            </g:FlowPanel>
+        </g:layer>
+        <g:layer top='3em' bottom='0px' width='100%'>
+            <g:LayoutPanel ui:field='docPanel' height='100%'>
+                <g:layer top='0.1EM' height='2EM' right='2.6EM' width='1.5EM'>
+                    <g:Image ui:field='errorImage' resource='{staneCoreRes.ErrorMessageIcon}' visible='false'/>
+                </g:layer>
+                <g:layer>
+                    <Document:RequiresResizeSpy ui:field='resizeSpy' />
+                </g:layer>
+                <g:layer left='0px' right='1.2em'>
+                    <g:HTMLPanel addStyleNames='{style.MarginBackground}'>
+                        <g:HTMLPanel addStyleNames='{style.MarginContainer}'/>
+                    </g:HTMLPanel>
+                </g:layer >
+                <g:layer top='0px' height='100%' left='0px' right='1.2em'>
+                    <g:ScrollPanel ui:field='scrollPanel' height='100%'>
+                        <g:AbsolutePanel ui:field='absolutePanel' height='100%'>
+                            <g:FocusPanel ui:field='focusPanel' height='100%'>
+                                <g:FlowPanel height='100%'>
+                                    <GwtGraphics:DrawingArea ui:field='canvas' addStyleNames='{style.DrawingArea} {style.BackGroundPos}'/>
+                                    <g:HTML ui:field='contentHTML' addStyleNames='{style.Content}'/>
+                                </g:FlowPanel>
+                            </g:FocusPanel>
+                        </g:AbsolutePanel>
+                    </g:ScrollPanel>
+                </g:layer>
+                <g:layer top='0px' height='100%' right='0px' width='1.2em'>
+                    <g:AbsolutePanel ui:field='occurencePanel' height='100%' width='100%'>
+                        <GwtGraphics:DrawingArea ui:field='occurenceBar' addStyleNames='{style.DrawingArea}'/>
+                    </g:AbsolutePanel>
+                </g:layer>
+            </g:LayoutPanel>
+        </g:layer>
+        <g:layer top='2em' left='0px' width='9px' height='9px'>
+            <g:Image ui:field='expandCollapseImg' resource='{staneCoreRes.MoveUpIcon}' title='expand/collapse toolbar'/>
+        </g:layer>
+    </g:LayoutPanel>
+</ui:UiBinder>
