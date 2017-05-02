@@ -67,7 +67,7 @@ Text mining is a mature discipline which empowers computer scientists to extract
 
 ## Text-mining on scientific publications is legal in France since 2016
 
-Since October 2016, when the "Loi pour une République numérique" was passed, French researchers can legally do text mining on scientific, publications. It is also the case in Great Britain since 2014. Text-mining has been mature for years, so the development of the OpenMinTeD plateforme is intended to make text-mining available to non-programmers and bridge the gap between what is considered possible and one researcher can actually in her daily activity achieve.
+[Since October 2016](https://via.hypothes.is/http://www.enseignementsup-recherche.gouv.fr/cid107077/les-chercheurs-francais-pourront-desormais-pratiquer-pleinement-la-fouille-de-texte-et-de-donnees.html), when the "Loi pour une République numérique" was passed, French researchers can legally do text mining on scientific, publications. It is also the case in Great Britain [since 2014](https://scinfolex.com/2014/04/01/le-royaume-uni-sanctuarise-les-pratiques-de-data-mining-par-le-biais-dune-exception-au-droit-dauteur/) and in the United States [since 2015](https://scinfolex.com/2015/10/21/comment-laffaire-google-books-se-termine-en-victoire-pour-le-text-mining/). Text-mining has been mature for years, so the development of the OpenMinTeD plateforme is intended to make text-mining available to non-programmers and bridge the gap between what is considered possible and one researcher can actually in her daily activity achieve.
 
 <!--
 
