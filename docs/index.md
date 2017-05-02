@@ -1,3 +1,9 @@
+---
+title: The Alvis suite
+...
+
+
+
 [The Alvis Suite](#the-alvis-suite) [OpenMinTeD](#openminted) [Job offer (we want you!)](#job-offer)
 
 <!--
