@@ -1,6 +1,0 @@
-tydidb.server=bdd
-tydidb.port=5432
-tydidb.dbname=termino
-tydidb.username=termino_admin
-tydidb.password=termdba;83
-tydidb.schema=training
