@@ -26,10 +26,10 @@ The Alvis suite is a Text Mining and knowledge exploration suite, in use in scie
 - modular: the Alvis suite is composed of:
 
      - _AlvisAE_: an annotation editor [git repo](https://github.com/bibliome/Alvis/) <!-- ![AlvisAE screenshot]() -->
-
-     - _AlvisNLP_: a text-mining workflow engine [git repo](https://github.com/bibliome/AlvisNLP/) <!-- ![AlvisNLP diagram]()  -->
-
-     - _AlvisIR_: a search engine interface enabling to explore text-mining results [git repo](https://github.com/bibliome/AlvisIR/) /  [demo instance](http://bibliome.jouy.inra.fr/demo/ontobiotope/alvisir2/webapi/search)<!--  ![AlvisIR screenshot]() -->
+     
+     - _AlvisNLP_: a text-mining workflow engine [git repo](https://github.com/bibliome/AlvisNLP/) <!-- ![AlvisNLP diagram]()  -->
+     
+     - _AlvisIR_: a search engine interface enabling to explore text-mining results [git repo](https://github.com/bibliome/AlvisIR/) /  [demo instance](http://bibliome.jouy.inra.fr/demo/ontobiotope/alvisir2/webapi/search)<!--  ![AlvisIR screenshot]() -->
 
 - easily extendable
 - designed for entity and relationships extraction
