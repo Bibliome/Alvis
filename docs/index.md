@@ -6,9 +6,6 @@ et démos
 
 jolis screenshots de AlvisX 
 
-lien loi République numérique
-lien UK
-
 logo bibliome
 logo INRA
 logo openminted
@@ -118,6 +115,7 @@ Degrees and skills:
 Outside of the mission, the developer will have the opportunity to be close to #MachineLearning, #Ontologies, #SearchEngineOptimisation, #OpenAccess, #OpenScience
 
 
+![INRA logo](http://maiage.jouy.inra.fr/sites/maiage.jouy.inra.fr/images/logo-inra.jpg) ![OpenMinTeD logo](http://openminted.eu/wp-content/uploads/2016/01/OpenMINTED_Tag_Color_small.png)
 
 <script async defer src="https://hypothes.is/embed.js"></script>
 
