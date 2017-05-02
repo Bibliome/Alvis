@@ -1,4 +1,6 @@
 
+# The Alvis suite
+
 The Alvis suite is a Text Mining and knowledge exploration suite, in use in scientific laboratories, which is
 ​
 - modular: the Alvis suite is composed of:
