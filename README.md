@@ -1,36 +1,21 @@
 
 # The Alvis suite
 
-The Alvis suite is a Text Mining and knowledge exploration suite, in use in scientific laboratories, which is
+The Alvis suite is a text-mining and knowledge management suite, in use in scientific laboratories.
 
-- modular: the Alvis suite is composed of:
+The Alvis suite has dedicated components:
 
-     - _AlvisAE_: an annotation editor [git repo](https://github.com/bibliome/Alvis/) ![AlvisAE screenshot]()
+- [AlvisNLP](https://github.com/bibliome/alvisnlp), an automatic corpus processing engine that features a library with more than 50 processing modules: tokenization, POS-tagging, parsing, NER, machine-learning, etc.)
 
-     - _AlvisNLP_: a text-mining workflow engine [git repo](https://github.com/bibliome/AlvisNLP/) ![AlvisNLP diagram]()
+- [AlvisAE](https://github.com/bibliome/alvisae), an annotation editor for building training corpora for NER, entity normalization and relation extraction.
 
-     - _AlvisIR_: a search engine interface enabling to explore text-mining results [git repo](https://github.com/bibliome/AlvisIR/) ![AlvisIR screenshot]()
-
-- easily extendable
-- designed for entity and relationships extraction
-
-With Alvis, one can:
-
-- train an information extraction model (supervised learning based on manual annotation)
-
-- extract entities and relationships
-
-- query a corpus of documents and get results enhanced by text-mining pre-processing (parent-child inference, ontology-based facets, proof of matching)
-
-It is built in Java and Google Web Toolkit, with a focus on user experience, both for the command-line tools and web interfaces.
+- [AlvisIR](https://github.com/bibliome/alvisae), a semantic search engine builder.
 
 Alvis is developped by the [Bibliome team](http://maiage.jouy.inra.fr/?q=fr/bibliome/) at the French National Institute for Agriculture Research (INRA).
 
-## Stage of development
+## Development stage
 
 The Alvis suite is in beta stage but stable enough to be used in production.
 
-Planned developments come within the H2020 [OpenMinTeD](https://openminted.eu) project.
-
-The Alvis suite will be integrated to the more exhaustive OpenMinTeD plateform (see below). On the roadmap is the tighter integration of the AlvisNLP text-mining super-module with the AlvisAE as well as packaging of the Alvis suite as components of the OpenMinTeD plateform. 
+The Alvis suite is part of [OpenMinTeD](https://openminted.eu) (H2020 EINFRA project) plateform. The roadmap includes a full integration of AlvisNLP, AlvisAE, and AlvisIR as components of OpenMinTeD.
 
