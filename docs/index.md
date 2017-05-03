@@ -113,7 +113,9 @@ The remuneration ranges from 2000 to 3000 €/month according to qualification a
 - Strong teamwork ability
 
 
-In their mission, the developer will have the opportunity to work with #MachineLearning, #Ontologies, #SearchEngineOptimisation, #OpenAccess, #OpenScience
+In her mission, the developer will have the opportunity to work with #MachineLearning, #Ontologies, #SearchEngineOptimisation, #OpenAccess, #OpenScience
+
+Application, including CV and cover letter is to be sent to [claire.nedellec@inra.fr](mailto:claire.nedellec@inra.fr)
 
 
 ![INRA logo](https://upload.wikimedia.org/wikipedia/fr/thumb/d/d4/INRA_logo.jpg/320px-INRA_logo.jpg) ![OpenMinTeD logo](http://openminted.eu/wp-content/uploads/2016/01/OpenMINTED_Tag_Color_small.png)
