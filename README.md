@@ -1,4 +1,3 @@
-
 # The Alvis suite
 
 The Alvis suite is a text-mining and knowledge management suite, in use in scientific laboratories.
