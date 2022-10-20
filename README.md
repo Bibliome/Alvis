@@ -8,7 +8,7 @@ The Alvis suite has dedicated components:
 
 - [AlvisAE](https://github.com/Bibliome/alvisae), an annotation editor for building training corpora for NER, entity normalization and relation extraction.
 
-- [AlvisIR](https://github.com/bibliome/alvisae), a semantic search engine builder.
+- [AlvisIR](https://github.com/bibliome/alvisir), a semantic search engine builder.
 
 - [TyDI](https://forgemia.inra.fr/bibliome/tydi), a terminology and ontology editor.
 
